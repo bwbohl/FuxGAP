@@ -1,4 +1,4 @@
 FuxGAP
 ======
 
-Prototype webapplication for proofing and generating conterpoint against Fux's Gradus Ad Parnassum
+Prototype webapplication for proofing and generating counterpoint against Fux's Gradus Ad Parnassum.
