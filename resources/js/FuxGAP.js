@@ -23,8 +23,8 @@ function eval(cpf,cp){
   spellMelody(cpf, 'cpf');
   spellMelody(cp, 'cp');
   spellIntervals(cpf, cp);
-  melodyToParsonsCode(cpf, 'cpf_parsons');
-  melodyToParsonsCode(cp, 'cp_parsons')
+  calculateSemitoneStep(cpf, 'cpf_semitones');
+  calculateSemitoneStep(cp, 'cp_semitones');
 };
 
 function getInterval (Ncpf, Ncf) {
@@ -92,7 +92,7 @@ function spellIntervals(cpf, cf){
   }
 };
 
-function melodyToParsonsCode (melody, targetID){
+function calculateSemitoneStep (melody, targetID){
   for (var n = 0; n < melody.length; n++){
     var span = document.createElement('span');
     var parsons;
