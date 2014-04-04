@@ -19,6 +19,10 @@ var noteVal = new Array (['c',1],['cis',2],['des',2],['d',3],['dis',4],['es',4],
 var cpf1 = new Array ([3,4,2],[6,4,2],[5,4,2],[3,4,2],[8,4,2],[6,4,2],[10,4,2],[8,4,2],[6,4,2],[5,4,2],[3,4,1]);
 var cp11 = new Array ([10,4,2],[10,4,2],[8,4,2],[10,4,2],[12,4,2],[1,5,2],[1,5,2],[12,4,2],[3,5,2],[2,5,2],[3,5,1]);
 
+/* main functio to call evaluation of a supplied cantus praefactus (cpf) and couterpoint (cp)
+ * @param cpf : given javascript array of cantus praefactus melody as seen for example in var cpf1
+ * @param cp : given javascript array of counterpointt melody as seen for example in var cp11
+ */ 
 function eval(cpf,cp){
   spellMelody(cpf, 'cpf');
   spellMelody(cp, 'cp');
@@ -27,6 +31,9 @@ function eval(cpf,cp){
   calculateSemitoneStep(cp, 'cp_semitones');
 };
 
+/* determines the harmonic intervals of two notes in cpf and cp
+ * 
+ */
 function getInterval (Ncpf, Ncf) {
 // TODO: vektor(above, below),
 // TODO: translate intervals
@@ -50,6 +57,9 @@ function getInterval (Ncpf, Ncf) {
 
 };
 
+/*
+ * translates a pitch class number to a pitch name
+ */
 function translatePvalToString(val){
 // TODO: enharmonics
   for (var x = 0; x < noteVal.length; x++){
@@ -61,6 +71,11 @@ function translatePvalToString(val){
   }
 };
 
+/* spells a given melody to pitch names
+ * 
+ * @param melody : melody array as e.g. seen in var cpf1
+ * @param targetID : gives the id value of a target div the melody shall be spelled to
+ */
 function spellMelody(melody, targetID) {
  //TODO: spell melodic intervals
   for (var n = 0; n < melody.length; n++){
@@ -79,6 +94,9 @@ function spellMelody(melody, targetID) {
   return console.log('error with melody '+n);
 };
 
+/* spells the intervals of to given melodies
+ * 
+ */
 function spellIntervals(cpf, cf){
  console.log('spellIntervals');
   for (x=0;x<cpf.length;x++){
@@ -92,6 +110,9 @@ function spellIntervals(cpf, cf){
   }
 };
 
+/*calculates the semitone steps of a given melody and spells them to targetID
+ * 
+ */
 function calculateSemitoneStep (melody, targetID){
   for (var n = 0; n < melody.length; n++){
     var span = document.createElement('span');
@@ -113,3 +134,10 @@ function calculateSemitoneStep (melody, targetID){
 };
 
 function evaluateMotus(){};
+
+
+/* get Harmony
+ * dur2beats
+ * MeiLib.dotsMult
+ * sumUpUntil
+ */
