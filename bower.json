@@ -1,0 +1,30 @@
+{
+  "name": "FuxGAP",
+  "version": "0.1.0",
+  "homepage": "https://github.com/bwbohl/FuxGAP",
+  "authors": [
+    "bwbohl"
+  ],
+  "description": "Fux Gradus Ad Parnassum webapplication",
+  "main": "index.html",
+  "keywords": [
+    "music",
+    "musicology",
+    "counterpoint",
+    "Fux",
+    "Gradus ad Parnassum"
+  ],
+  "license": "CC BY-SA 3.0 DE / The BSD 2-Clause License",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "vexflow": "#5f5050791b8ff9232382342454aa71e8bf757b09",
+    "raphael": "~2.1.2",
+    "meitovexflow": "https://github.com/TEI-Music-SIG/MEItoVexFlow.git"
+  }
+}

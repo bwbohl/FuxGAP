@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:mei="http://www.music-encoding.org/ns/mei"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:mo="http://purl.org/ontology/mo/"
+  xmlns:mo-i="http://purl.org/ontology/mo-imaginary/"
+  xmlns:event="http://purl.org/NET/c4dm/event.owl"
+  version="HTML+RDFa 1.0" xml:lang="en">
     <head>
         <title>FuxGAP</title>
-<!--      <script type="text/javascript" src="resources/js/meitovexflow.min.js"/>-->
-      <script type="text/javascript" src="resources/js/FuxGAP.js"/>
+      
+      <script type="text/JavaScript" src="bower_components/jquery/dist/jquery.min.js"/>
+      <script type="text/JavaScript" src="bower_components/vexflow/build/vexflow/vexflow-min.js"/>
+      <script type="text/JavaScript" src="bower_components/MEItoVexflow/dist/meitovexflow.min.js"/>
+      <script type="text/javascript" src="bower_components/meitovexflow/tests/runtest.js"/>
+      <script type="text/JavaScript" src="resources/js/meitovexflow/loadXMLDoc.js"/>
+      
+      <script type="text/JavaScript" src="resources/js/FuxGAP.js"/>
+      
       <style type="text/css">
         #cpf {
           width: 100%;
-          height: 300px;
         }
         span {
           display: inline-block;
@@ -18,6 +32,7 @@
         div{
           margin: 10px 0;
         }
+       
       </style>
     </head>
   <body onload="eval(cpf1,cp11);">
@@ -36,6 +51,29 @@
         <div id="cpf_semitones"></div>
         <h3>Melody</h3>
         <div id="cpf"></div>
+        <div id="cpf_notation">
+          <canvas></canvas>
+        </div>
       </section>
+    <script type="text/javascript">
+      var testItem_html = "<h2><span class='test-title' property='dc:title'>Title of Test Comes Here</span></h2><div class='a'><canvas width='1031' height='450' style='border: none'></canvas></div>";
+      
+      var canvas_elements = new Array();
+			var title_elements = new Array();
+      
+      $('#cpf_notation').append(testItem_html);
+      console.log($('#cpf_notation canvas'));
+      
+      canvas_elements = $("div canvas");
+      title_elements = $("span.test-title");
+      
+      console.log('canvas_elements');
+      console.log(canvas_elements);
+      console.log('title_elements');
+      console.log(title_elements);
+
+      //MEI2VF.render_notation('resources/xml/cpf1.xml',$('#cpf_notation'));
+      MEI2VF.RunTest({ title: 'CPF1', mei_xml: 'resources/xml/cpf1.xml', canvas_height:300}, canvas_elements[0], title_elements[0]);
+    </script>
     </body>
 </html>

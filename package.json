@@ -1,0 +1,35 @@
+{
+  "name": "FuxGAP",
+  "version": "0.1.0",
+  "description": "Fux Gradus Ad Parnassum webapplication",
+  "main": "index.xhtml",
+  "dependencies": {
+    "grunt": "~0.4.4"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-connect": "~0.7.1"
+
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bwbohl/FuxGAP.git"
+  },
+  "keywords": [
+    "music",
+    "musicology",
+    "counterpoint",
+    "Fux",
+    "Gradus ad Parnassum"
+  ],
+  "author": "Benjamin W. Bohl",
+  "license": "CC BY-SA 3.0 DE / The BSD 2-Clause License",
+  "bugs": {
+    "url": "https://github.com/bwbohl/FuxGAP/issues"
+  },
+  "homepage": "https://github.com/bwbohl/FuxGAP"
+}
