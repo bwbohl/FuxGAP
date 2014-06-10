@@ -1,143 +1,80 @@
-//TODO: arrays to JSON?
+// FuxGAP counterpoint rules
+// Copyright Benjamin W. Bohl 2014.
+// Implements Fux species, first.
+// http://www.github.com/bwbohl/FuxGAP
+// 
+// ## Description
+// 
+// This file implements Fux's first species
+// 
+// reference to testfile
 
-var intervals = new Array ([0, 'P1'],
-                           [1, 'm2'],
-                           [2, 'M2'],
-                           [3, 'm3'],
-                           [4, 'M3'],
-                           [5, 'P4'],
-                           [6, 'TT'],
-                           [7, 'P5'],
-                           [8, 'm6'],
-                           [9, 'M6'],
-                           [10, 'm7'],
-                           [11, 'M7'],
-                           [12, 'P8']);
+function FuxGAP() {};
 
-var noteVal = new Array (['c',1],['cis',2],['des',2],['d',3],['dis',4],['es',4],['e',5],['f',6],['fis',7],['ges',7],['g',8],['gis',9],['as',9],['a',10],['ais',11],['bb',11],['b',12]);
-// melody arrays [pitch,octave,duration]
-var cpf1 = new Array ([3,4,2],[6,4,2],[5,4,2],[3,4,2],[8,4,2],[6,4,2],[10,4,2],[8,4,2],[6,4,2],[5,4,2],[3,4,1]);
-var cp11 = new Array ([10,4,2],[10,4,2],[8,4,2],[10,4,2],[12,4,2],[1,5,2],[1,5,2],[12,4,2],[3,5,2],[2,5,2],[3,5,1]);
-
-/* main functio to call evaluation of a supplied cantus praefactus (cpf) and couterpoint (cp)
- * @param cpf : given javascript array of cantus praefactus melody as seen for example in var cpf1
- * @param cp : given javascript array of counterpointt melody as seen for example in var cp11
- */ 
-function eval(cpf,cp){
-  spellMelody(cpf, 'cpf');
-  spellMelody(cp, 'cp');
-  spellIntervals(cpf, cp);
-  calculateSemitoneStep(cpf, 'cpf_semitones');
-  calculateSemitoneStep(cp, 'cp_semitones');
+// Default log function sends all arguments to console.
+FuxGAP.prototype.L = function(block, args) {
+  if (!args) return;
+  var line =  Array.prototype.slice.call(args).join(" ");//[].slice.call(arguments);
+  window.console.log(block + ": " + line);
 };
 
-/* determines the harmonic intervals of two notes in cpf and cp
- * 
- */
-function getInterval (Ncpf, Ncf) {
-// TODO: vektor(above, below),
-// TODO: translate intervals
-  val = Ncpf[0]-Ncf[0];
-  console.log(val);
-  if(val < 0 ){ //TODO better with while?
-    var newVal = Math.abs(val);
-    console.log(newVal);
-    return intervals[newVal][1] + '/' + val;
-  }else if (val == 0){
-    switch(Ncpf[1]-Ncf[1]){
-      case -1:
-        return intervals[12][1] + '/' + val;
-      case -2:
-        return intervals[12][1] + '+' + intervals[12][1] + '/' + val;
-      //TODO other cases? e.g. cp lower than cpf?
-    }
-  }else if(val > 0 && (Ncpf[1]-Ncf[1]) < 0){
-    return intervals[12-val][1] + '/' + val;
-  }
-
-};
 
 /*
- * translates a pitch class number to a pitch name
+ * Evaluates the species of the supplied counterpoint composition
+ * 
+ * @param: cpf the given Cantus Praefactus melody
+ * @param: cp the corresponding Counterpoint melody
  */
-function translatePvalToString(val){
-// TODO: enharmonics
-  for (var x = 0; x < noteVal.length; x++){
-    var entry = noteVal[x];
-    console.log(entry);
-    if(entry[1] == val){
-      return entry[0];
+FuxGAP.prototype.evaluateSpecies = function(cpf, cp){
+  
+  // log that function has been called
+  console.log('evaluateSpecies called');
+  
+  // species will hold the result of the evalulation
+  var species = new String();
+  
+  // durs_cpf is an array that will hold all the duration values of the Cantus Praefactus
+  var durs_cpf = new Array();
+  
+  // durs_cp is an array that will hold all the duration values of the Counterpoint
+  var durs_cp = new Array();
+  
+  // assign default value to var species
+  species = 'undetermined';
+
+  // push cpf durations to durs_cpf
+  for(var i = 0; i < cpf.length; i++){
+    /*console.log('pos: ' + i);
+    console.log('value: ' + cp[i][2]);*/
+    durs_cpf.push(cpf[i][2]);
+  }
+  
+  // push cp durations to durs_cpf
+  for(var i = 0; i < cp.length; i++){
+    /*console.log('pos: ' + i);
+    console.log('value: ' + cp[i][2]);*/
+    durs_cp.push(cp[i][2]);
+  }
+  
+  // check for first species
+  for (var i = 0; i < durs_cp.length; i++){
+    if (durs_cp[i] == durs_cpf[i]){
+      species = 'first';
     }
   }
-};
-
-/* spells a given melody to pitch names
- * 
- * @param melody : melody array as e.g. seen in var cpf1
- * @param targetID : gives the id value of a target div the melody shall be spelled to
- */
-function spellMelody(melody, targetID) {
- //TODO: spell melodic intervals
-  for (var n = 0; n < melody.length; n++){
-   span = document.createElement('span');
-   note = melody[n];
-   pval = note[0];
-   
-   pname = translatePvalToString(pval);
-   
-   span.innerHTML = pname + '<br/>' + note;
-   document.getElementById(targetID).appendChild(span); 
-   
-   console.log(n + ' is ' + melody[n]);
-   console.log(span);
+  
+  // log var species
+  console.log('species: '+ species);
+  
+  /*console.log('durs_cp: ');
+  console.log(durs_cp);*/
+  
+  //return species;
+  
+    if (species == 'first') {
+    FuxGAP_species_first(Species1_ex1.cpf, Species1_ex1.cp);
   }
-  return console.log('error with melody '+n);
+  
 };
 
-/* spells the intervals of to given melodies
- * 
- */
-function spellIntervals(cpf, cf){
- console.log('spellIntervals');
-  for (x=0;x<cpf.length;x++){
-    var i = getInterval(cpf[x],cf[x]);
-    console.log(cpf[x]);
-    span = document.createElement('span');
-    
-    span.innerHTML = getInterval(cpf[x], cf[x]);
-    document.getElementById('intervals').appendChild(span); 
-
-  }
-};
-
-/*calculates the semitone steps of a given melody and spells them to targetID
- * 
- */
-function calculateSemitoneStep (melody, targetID){
-  for (var n = 0; n < melody.length; n++){
-    var span = document.createElement('span');
-    var parsons;
-    if (n == 0){
-      parsons = '-';
-    } else if (melody[n][1] > melody[n-1][1]){
-      parsons = melody[n][0] - melody[n-1][0] +12;
-    } else if (melody[n][1] < melody[n-1][1]){
-      parsons = melody[n][0] - melody[n-1][0] -12;
-    } else {
-      parsons = melody[n][0] - melody[n-1][0];
-    }
-    console.log(parsons);
-    
-    span.innerHTML = parsons;
-    document.getElementById(targetID).appendChild(span);
-  }
-};
-
-function evaluateMotus(){};
-
-
-/* get Harmony
- * dur2beats
- * MeiLib.dotsMult
- * sumUpUntil
- */
+FuxGAP1 = new FuxGAP();
