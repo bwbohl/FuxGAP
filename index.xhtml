@@ -18,24 +18,42 @@
       <script type="text/javascript" src="bower_components/meitovexflow/tests/runtest.js"/>
       <script type="text/JavaScript" src="resources/js/meitovexflow/loadXMLDoc.js"/>
       
-      <script type="text/JavaScript" src="resources/js/FuxGAP.js"/>
-      
+    	<script type="text/JavaScript" src="resources/js/FuxGAP.js"/>
+    	<script type="text/JavaScript" src="resources/js/pitch-class.js"/>
+    	<script type="text/JavaScript" src="resources/js/interval.js"/>
+    	<script type="text/JavaScript" src="resources/js/example.js"/>
+
       <style type="text/css">
         #cpf {
           width: 100%;
         }
         span {
           display: inline-block;
-          width: 60px;
+          width: 95px;
+        }
+        
+        span:first-of-type {
+          display: inline-block;
+          width: 80px;
+        }
+        
+        span:last-of-type {
+          display: inline-block;
+          width: 80px;
+          margin-left:-40px;
         }
         
         div{
           margin: 10px 0;
         }
+        
+        #cp, #cpf, #cp_semitones, #cpf_semitones, #intervals {
+          margin-left:40px;
+        }
        
       </style>
     </head>
-  <body onload="eval(cpf1,cp11);">
+  <body onload="eval(Species1_ex1);">
       <section>
         <h1>FuxGAP</h1>
         <h2>CP</h2>
@@ -44,16 +62,19 @@
         <h3>Melody</h3>
         <div id="cp"></div>
         <h2>Evaluation</h2>
-        <h3>Intervals</h3>
+        <h3>Intervals (name/semitones)</h3>
         <div id="intervals"></div>
+        
+        <div id="cpf_notation">
+          <canvas></canvas>
+        </div>
+        
         <h2>CPF</h2>
         <h3>Semitone Steps</h3>
         <div id="cpf_semitones"></div>
         <h3>Melody</h3>
         <div id="cpf"></div>
-        <div id="cpf_notation">
-          <canvas></canvas>
-        </div>
+        
       </section>
     <script type="text/javascript">
       var testItem_html = "<h2><span class='test-title' property='dc:title'>Title of Test Comes Here</span></h2><div class='a'><canvas width='1031' height='450' style='border: none'></canvas></div>";
@@ -75,5 +96,13 @@
       //MEI2VF.render_notation('resources/xml/cpf1.xml',$('#cpf_notation'));
       MEI2VF.RunTest({ title: 'CPF1', mei_xml: 'resources/xml/cpf1.xml', canvas_height:300}, canvas_elements[0], title_elements[0]);
     </script>
+  	
+  	<script type="text/javascript">
+  	
+  		FuxGAP.Interval.DEBUG = true;
+  		FuxGAP.Example.DEBUG = true;
+  	</script>
+  	
+  	<script type="text/JavaScript" src="resources/js/species1.js"/>
     </body>
 </html>
