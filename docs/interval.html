@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>interval.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>interval.js</h1>
+        
+
+        
+      </div>
+
+      
+        
+        <p>FuxGAP counterpoint rules
+Copyright Benjamin W. Bohl 2014.
+Implements intervals.
+<a href="http://www.github.com/bwbohl/FuxGAP">http://www.github.com/bwbohl/FuxGAP</a></p>
+<h2 id="description">Description</h2>
+<p>This file implements intervals</p>
+<p>reference to testfile</p>
+
+        
+          <div class='highlight'><pre>
+FuxGap.Interval = (<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Inteval</span><span class="hljs-params">(interval)</span>{</span>
+      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">arguments</span>.length &gt; <span class="hljs-number">0</span>) <span class="hljs-keyword">this</span>.init(interval);
+   }</pre></div>
+        
+      
+        
+        <p>To enable logging for this class set FuxGAP.interval.DEBUG to ‘true’</p>
+
+        
+          <div class='highlight'><pre>   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">L</span><span class="hljs-params">()</span>{</span> <span class="hljs-keyword">if</span> (FuxGAP.interval.DEBUG) FuxGAP.L(<span class="hljs-string">'FuxGAP.Interval'</span>, <span class="hljs-built_in">arguments</span>); }</pre></div>
+        
+      
+        
+        <p>defined intervals are</p>
+
+        
+          <div class='highlight'><pre>   
+});
+
+
+
+<span class="hljs-keyword">var</span> intervals = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span> ([<span class="hljs-number">0</span>, <span class="hljs-string">'P1'</span>],
+                              [<span class="hljs-number">1</span>, <span class="hljs-string">'m2'</span>],
+                              [<span class="hljs-number">2</span>, <span class="hljs-string">'M2'</span>],
+                              [<span class="hljs-number">3</span>, <span class="hljs-string">'m3'</span>],
+                              [<span class="hljs-number">4</span>, <span class="hljs-string">'M3'</span>],
+                              [<span class="hljs-number">5</span>, <span class="hljs-string">'P4'</span>],
+                              [<span class="hljs-number">6</span>, <span class="hljs-string">'TT'</span>],
+                              [<span class="hljs-number">7</span>, <span class="hljs-string">'P5'</span>],
+                              [<span class="hljs-number">8</span>, <span class="hljs-string">'m6'</span>],
+                              [<span class="hljs-number">9</span>, <span class="hljs-string">'M6'</span>],
+                              [<span class="hljs-number">10</span>, <span class="hljs-string">'m7'</span>],
+                              [<span class="hljs-number">11</span>, <span class="hljs-string">'M7'</span>],
+                              [<span class="hljs-number">12</span>, <span class="hljs-string">'P8'</span>]);
+
+<span class="hljs-keyword">var</span> cons_perf = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>([<span class="hljs-number">0</span>, <span class="hljs-string">'P1'</span>],
+                          [<span class="hljs-number">7</span>, <span class="hljs-string">'P5'</span>],
+                          [<span class="hljs-number">12</span>, <span class="hljs-string">'P8'</span>]);
+
+<span class="hljs-keyword">var</span> cons_imp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span> ([<span class="hljs-number">3</span>, <span class="hljs-string">'m3'</span>],
+                          [<span class="hljs-number">4</span>, <span class="hljs-string">'M3'</span>],
+                          [<span class="hljs-number">8</span>, <span class="hljs-string">'m6'</span>],
+                          [<span class="hljs-number">9</span>, <span class="hljs-string">'M6'</span>]);
+                        
+<span class="hljs-keyword">var</span> consonances = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>().concat(cons_perf, cons_imp);
+
+<span class="hljs-keyword">var</span> dissonances = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>([<span class="hljs-number">1</span>, <span class="hljs-string">'m2'</span>],
+                            [<span class="hljs-number">2</span>, <span class="hljs-string">'M2'</span>],
+                            [<span class="hljs-number">5</span>, <span class="hljs-string">'P4'</span>],
+                            [<span class="hljs-number">6</span>, <span class="hljs-string">'M4'</span>],<span class="hljs-comment">//große4</span>
+                            [<span class="hljs-number">6</span>, <span class="hljs-string">'m5'</span>],<span class="hljs-comment">//falsche 5</span>
+                            [<span class="hljs-number">10</span>, <span class="hljs-string">'m7'</span>],
+                            [<span class="hljs-number">11</span>, <span class="hljs-string">'M7'</span>]);</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

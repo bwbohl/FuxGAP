@@ -12,8 +12,10 @@
 FuxGAP.Example = function(cpf, cp){
 	this.cpf = cpf;
 	this.cp = cp;
-
-  this.L('FuxGAP.Example init ', arguments);
+	
+	init: {
+        this.L('FuxGAP.Example init ', arguments);
+    }
 };
 
 
@@ -26,3 +28,7 @@ FuxGAP.Example.prototype = new FuxGAP();
   	FuxGAP.L("FuxGAP.Interval", arguments);
   	}
 };*/
+
+// Fux's first example
+Species1_ex1 = new FuxGAP.Example(cpf = new Array (new Array(3,4,2),new Array(6,4,2),new Array(5,4,2),new Array(3,4,2),new Array(8,4,2),new Array(6,4,2),new Array(10,4,2),new Array(8,4,2),new Array(6,4,2),new Array(5,4,2),new Array(3,4,1)),
+                                  cp = new Array (new Array(10,4,2),new Array(10,4,2),new Array(8,4,2),new Array(10,4,2),new Array(12,4,2),new Array(1,5,2),new Array(1,5,2),new Array(12,4,2),new Array(3,5,2),new Array(2,5,2),new Array(3,5,1)));

@@ -9,11 +9,6 @@ var cpf1 = new Array (new Array(3,4,2),new Array(6,4,2),new Array(5,4,2),new Arr
  counterpoint of Fux's first example
 var cp11 = new Array (new Array(10,4,2),new Array(10,4,2),new Array(8,4,2),new Array(10,4,2),new Array(12,4,2),new Array(1,5,2),new Array(1,5,2),new Array(12,4,2),new Array(3,5,2),new Array(2,5,2),new Array(3,5,1));*/
 
-// Fux's first example
-Species1_ex1 = new FuxGAP.Example(cpf = new Array (new Array(3,4,2),new Array(6,4,2),new Array(5,4,2),new Array(3,4,2),new Array(8,4,2),new Array(6,4,2),new Array(10,4,2),new Array(8,4,2),new Array(6,4,2),new Array(5,4,2),new Array(3,4,1)),
-                                  cp = new Array (new Array(10,4,2),new Array(10,4,2),new Array(8,4,2),new Array(10,4,2),new Array(12,4,2),new Array(1,5,2),new Array(1,5,2),new Array(12,4,2),new Array(3,5,2),new Array(2,5,2),new Array(3,5,1)));
-
-
 // load MEI XML file of first example for use in vexflow rendering
 var xmlDoc=loadXMLDoc('resources/xml/cpf1.xml');
   if (xmlDoc) { 
@@ -50,22 +45,35 @@ function getInterval (Ncpf, Ncp) {
   
   //calculate the difference between pitch values of cantus praefactus and counterpoint
   var semiV = getIntervalSemitonesVektor(Ncpf, Ncp);
-/*  console.log('getInterval vectorized semitones: ' + semiV);*/
+  console.log('getInterval vectorized semitones: ' + semiV);
   
   var parsons = getParsons(Ncpf,Ncp);
+  console.log('getInterval parsons: ' + parsons);
+
   var semitones = Math.abs(semiV);
+  console.log('getInterval abs. semitones: ' + semitones);  
   
   // if semiV is negative that is if pitch-class of counterpoint is lower than that of cantus praefactus
   if(semiV < 0 ){ //TODO better with while?
-    
+    //TODO 2014-06-25 deprecated?
     // get absolute semitone value / distance
     var semi = Math.abs(semiV);
-/*    console.log('getInterval abosolute semitones: ' + semi);*/
+       console.log('getInterval abosolute semitones: ' + semi);
     return intervals[semi][1]; /* + '/' + semiV*/
   
   // if semiV is positive return respective interval
   }else {
-    return intervals[semiV][1];/* + '/' + semiV*/
+/*        console.log($(FuxGAP.interval).each());*/
+    var i;
+    $(FuxGAP.Intervals).each(
+      function(index,item){
+        if(item.semitones == semitones){
+            console.log(item);
+            i = item;
+        }
+      }); //TODO hier weiter
+      
+      return i.name;
   }
 
 };
